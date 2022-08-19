@@ -1,0 +1,11 @@
+# -*- MakeFile -*-
+CC = gcc
+SRC = main.c school.c
+OBJ = $(patsubst %.c,%.o,$(SRC))
+NAME = school
+
+%.o: %.c
+	$(CC) -c -o $@ $<
+
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)

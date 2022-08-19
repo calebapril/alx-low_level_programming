@@ -1,0 +1,24 @@
+# -*- Make File -*-
+
+CC = gcc
+SRC = main.c school.c
+OBJ = $(patsubst %.c,%.o,$(SRC))
+NAME = school
+RM = rm
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+clean:
+	$(RM) -f *~ $(NAME)
+
+oclean:
+	$(RM) -f $(OBJ)
+
+fclean: clean oclean
+
+re: oclean all
